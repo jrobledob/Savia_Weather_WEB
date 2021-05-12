@@ -5,7 +5,7 @@ library(leaflet) #For maps creation
 library(readr) #For github download
 
 #definition of important URLs---- 
-research_center_coordinates_URL<- url("https://raw.githubusercontent.com/jrobledob/Savia_Weather_WEB/main/Data/resear_center_information.csv")
+research_center_coordinates_URL<- url("https://raw.githubusercontent.com/jrobledob/Savia_Weather_WEB/main/data/Research_center_information_map.csv")
 
 
 shinyServer(function(input, output) {

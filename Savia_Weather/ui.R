@@ -18,6 +18,9 @@ shinyUI(fluidPage(
                
                
                #Process----
-               tabPanel("Climatic data", icon = icon ("signal")))
+               tabPanel("Climatic data", icon = icon ("signal")
+                        #here
+                        
+                        ))
   
 ))
