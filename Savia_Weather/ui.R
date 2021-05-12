@@ -9,7 +9,7 @@ shinyUI(fluidPage(
     
     navbarPage(title = "SAVIA WEATHER APP",
                #General information----
-               tabPanel("Research Centers", icon =icon("map-marker"),
+               tabPanel("Centros de Investigación", icon =icon("map-marker"),
                         #Map of Colombia with the research Center---
                         leafletOutput("research_Centers_Map")
                         
@@ -18,7 +18,7 @@ shinyUI(fluidPage(
                
                
                #Process----
-               tabPanel("Climatic data", icon = icon ("signal")
+               tabPanel("Datos Climáticos", icon = icon ("signal")
                         #here
                         
                         ))
