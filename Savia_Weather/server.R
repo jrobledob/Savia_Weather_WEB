@@ -1,26 +1,24 @@
-#
-# This is the server logic of a Shiny web application. You can run the
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
+# This is the server logic
+#Libraries---- 
 library(shiny)
+library(leaflet) #For maps creation
+library(readr) #For github download
 
-# Define server logic required to draw a histogram
+#definition of important URLs---- 
+research_center_coordinates_URL<- url("https://raw.githubusercontent.com/jrobledob/Savia_Weather_WEB/main/Data/resear_center_information.csv")
+
+
 shinyServer(function(input, output) {
-
-    output$distPlot <- renderPlot({
-
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
-
-    })
-
+    
+    #Map with a pin whit information of every research center----
+   output$research_Centers_Map <-renderLeaflet({
+       #definition of information----
+       research_center_coordinates<- read_csv2(research_center_coordinates_URL, locale(encoding = "UTF-8"),col_names = TRUE,col_types = NULL)
+       #research_center_coordinates----
+       map <- leaflet(data= research_center_coordinates) %>% 
+           addTiles()  %>% 
+           setView(lng = -72.930136, lat = 4.115672,
+                      zoom = 5) %>%
+           addMarkers(~long, ~lat, popup = ~as.character(popup), label = ~as.character(label))
+   })
 })
